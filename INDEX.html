@@ -1,0 +1,513 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boarding PTIT</title>
+    <link rel="icon" type="image/x-icon"
+        href="https://upload.wikimedia.org/wikipedia/commons/1/13/Logo_PTIT_University.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600.form-structorfamily=Cormorant:ital,wght@1,300.form-structorfamily=Great+Vibes.form-structorfamily=Gruppo.form-structordisplay=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel.form-structorfamily=Cormorant+Garamond:wght@300;600.form-structorfamily=Cormorant:ital,wght@1,300.form-structorfamily=Great+Vibes.form-structorfamily=Gruppo.form-structordisplay=swap"
+        rel="stylesheet">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+
+        html,
+        body {
+            position: relative;
+            min-height: 100vh;
+            background-image: url("https://cdn.portal.dtqt.edu.vn/uploads/default/images/sliders/slider-1.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .wrapper {
+            background: #000000;
+            position: fixed;
+            width: 100%;
+        }
+
+        .wrapper nav {
+            position: relative;
+            display: flex;
+            max-width: calc(100% - 200px);
+            margin: 0 auto;
+            height: 70px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .content {
+            display: flex;
+            align-items: center;
+        }
+
+        nav .content .links {
+            margin-left: 80px;
+            display: flex;
+        }
+
+        .content .logo a {
+            color: #fff;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        .content .links li {
+            list-style: none;
+            line-height: 70px;
+        }
+
+        .content .links li a,
+        .content .links li label {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 9px 17px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .content .links li label {
+            display: none;
+        }
+
+        .content .links li a:hover,
+        .content .links li label:hover {
+            background: #474747;
+        }
+
+        .wrapper .search-icon,
+        .wrapper .menu-icon {
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            line-height: 70px;
+            width: 70px;
+            text-align: center;
+        }
+
+        .wrapper .menu-icon {
+            display: none;
+        }
+
+        .wrapper #show-search:checked~.search-icon i::before {
+            content: "\f00d";
+        }
+
+        .wrapper .search-box {
+            position: absolute;
+            height: 100%;
+            max-width: calc(100% - 50px);
+            width: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .wrapper #show-search:checked~.search-box {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            font-size: 17px;
+            color: #fff;
+            background: #000000;
+            padding: 0 100px 0 15px;
+        }
+
+        .search-box input::placeholder {
+            color: #f2f2f2;
+        }
+
+        .search-box .go-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            line-height: 60px;
+            width: 70px;
+            background: #000000;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .wrapper input[type="checkbox"] {
+            display: none;
+        }
+
+        .form-structor {
+            background-color: #222;
+            border-radius: 15px;
+            height: 550px;
+            width: 350px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 150px;
+        }
+
+        .form-structor::after {
+            content: "";
+            opacity: 0.8;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 500px;
+            background-image: url("");
+        }
+
+        .form-structor .signup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65%;
+            z-index: 5;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .signup.slide-up {
+            top: 5%;
+            transform: translate(-50%, 0%);
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .signup.slide-up .form-holder,
+        .form-structor .signup.slide-up .submit-btn {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .form-structor .signup.slide-up .form-title {
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .form-structor .signup.slide-up .form-title span {
+            margin-right: 5px;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .signup .form-title {
+            color: #fff;
+            font-size: 1.7em;
+            text-align: center;
+        }
+
+        .form-structor .signup .form-title span {
+            color: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .signup .form-holder {
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden;
+            margin-top: 50px;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .signup .form-holder .input {
+            border: 0;
+            outline: none;
+            box-shadow: none;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            padding: 8px 15px;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .form-structor .signup .form-holder .input:last-child {
+            border-bottom: 0;
+        }
+
+        .form-structor .signup .form-holder .input::-webkit-input-placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .form-structor .signup .submit-btn {
+            background-color: rgba(0, 0, 0, 0.4);
+            color: rgba(255, 255, 255, 0.7);
+            border: 0;
+            border-radius: 15px;
+            display: block;
+            margin: 15px auto;
+            padding: 15px 45px;
+            width: 100%;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .signup .submit-btn:hover {
+            transition: all 0.3s ease;
+            background-color: rgba(154, 0, 0, 0.8);
+        }
+
+        .form-structor .login {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #fff;
+            z-index: 5;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .login::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: -20px;
+            transform: translate(-50%, 0);
+            background-color: #fff;
+            width: 200%;
+            height: 250px;
+            border-radius: 50%;
+            z-index: 4;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .login .center {
+            position: absolute;
+            top: calc(50% - 10%);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65%;
+            z-index: 5;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .login .center .form-title {
+            color: #000;
+            font-size: 1.7em;
+            text-align: center;
+        }
+
+        .form-structor .login .center .form-title span {
+            color: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .login .center .form-holder {
+            border-radius: 15px;
+            background-color: #fff;
+            border: 1px solid #eee;
+            overflow: hidden;
+            margin-top: 50px;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .login .center .form-holder .input {
+            border: 0;
+            outline: none;
+            box-shadow: none;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            padding: 8px 15px;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .form-structor .login .center .form-holder .input:last-child {
+            border-bottom: 0;
+        }
+
+        .form-structor .login .center .form-holder .input::-webkit-input-placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .form-structor .login .center .submit-btn {
+            background-color: rgb(207, 42, 42);
+            color: black;
+            border: 0;
+            border-radius: 15px;
+            display: block;
+            margin: 15px auto;
+            padding: 15px 45px;
+            width: 100%;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .login .center .submit-btn:hover {
+            transition: all 0.3s ease;
+            background-color: #dd0606;
+        }
+
+        .form-structor .login.slide-up {
+            top: 90%;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .login.slide-up .center {
+            top: 10%;
+            transform: translate(-50%, 0%);
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .login.slide-up .form-holder,
+        .form-structor .login.slide-up .submit-btn {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .login.slide-up .form-title {
+            font-size: 1em;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-structor .login.slide-up .form-title span {
+            margin-right: 5px;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+        }
+
+        .wrapper {
+            z-index: 2;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="wrapper">
+        <nav>
+            <input type="checkbox" id="show-search">
+            <input type="checkbox" id="show-menu">
+            <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <div class="content">
+                <div class="logo"><a href="#">PTIT</a></div>
+            </div>
+            <!-- <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+            <form action="#" class="search-box">
+                <input type="text" placeholder="Type Something to Search..." required>
+                <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+            </form> -->
+        </nav>
+    </div>
+    <div class="form-structor">
+        <div class="signup">
+            <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
+            <div class="form-holder">
+                <form action="create.php" method="post">
+                    <input type="text" class="input" placeholder="Name" />
+                    <input type="email" id="emailInput" class="input" placeholder="Email" />
+                    <input type="password" class="input" placeholder="Password" />
+                </form>
+            </div>
+            <button onclick="checkEmail()" class="submit-btn">Sign up</button>
+             <script>
+                function validateEmail(email){
+                    var re = /^[^\s@]+[^\s@]+\.[^\s@]+$/;
+                    return re.test(email);
+                }
+
+                function checkEmail(){
+                    var email = document.getElementById('emailInput').value;
+                    var resultText = validateEmail(email) ? "Email is valid" : "Email is invalid";
+
+                    document.getElemmentById('result').textContent = resultRext
+                }
+            </script>
+        </div>
+        <div class="login slide-up">
+            <div class="center">
+                <h2 class="form-title" id="login"><span>or</span>Log in</h2>
+                <div class="form-holder">
+                    <form action="connect.php" method="post">
+                        <input type="email" class="input" placeholder="Email" />
+                        <input type="password" class="input" placeholder="Password" />
+                    </form>
+                </div>
+                <button class="submit-btn">Log in</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        console.clear();
+
+        const loginBtn = document.getElementById('login');
+        const signupBtn = document.getElementById('signup');
+
+        loginBtn.addEventListener('click', (e) => {
+            let parent = e.target.parentNode.parentNode;
+            Array.from(e.target.parentNode.parentNode.classList).find((element) => {
+                if (element !== "slide-up") {
+                    parent.classList.add('slide-up')
+                } else {
+                    signupBtn.parentNode.classList.add('slide-up')
+                    parent.classList.remove('slide-up')
+                }
+            });
+        });
+
+        signupBtn.addEventListener('click', (e) => {
+            let parent = e.target.parentNode;
+            Array.from(e.target.parentNode.classList).find((element) => {
+                if (element !== "slide-up") {
+                    parent.classList.add('slide-up')
+                } else {
+                    loginBtn.parentNode.parentNode.classList.add('slide-up')
+                    parent.classList.remove('slide-up')
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
